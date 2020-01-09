@@ -34,9 +34,9 @@ select PO,
        IS_SAMPLE,
        SALES_REP_COMPANY,
        MSO_FLG,
-       CULTIVATOR,sum(b.remainingweight) as remainingweight, remainingweight as Remaining_Weight,INVENTORYROOM_NAME as BT_INVENTORYROOM,PRODUCTID as BT_PRODUCT
+       CULTIVATOR, remainingweight as Remaining_Weight,INVENTORYROOM_NAME as BT_INVENTORYROOM,PRODUCTID as BT_PRODUCT
 from "ANALYTICS_DB"."WHOLESALE"."WHOLESALE_SALES" a
-left join (select  sum(remainingweight) as remainingweight, productid, strain, INVENTORY_ID, INVENTORYROOM_NAME from ANALYTICS_DB.CULTIVATION.BIOTRACK_CURRENT_INVENTORY where   inventoryroom_name like '%Pre%' ---or INVENTORYTYPE in (22,23,24,45)
+left join (select  sum(remainingweight) as remainingweight, productid, strain, INVENTORY_ID, INVENTORYROOM_NAME from ANALYTICS_DB.CULTIVATION.BIOTRACK_CURRENT_INVENTORY where   inventoryroom_name like '%Pre%'
 group by productid, strain, INVENTORY_ID, INVENTORYROOM_NAME) b
 
 
@@ -92,4 +92,4 @@ PO,
        IS_SAMPLE,
        SALES_REP_COMPANY,
        MSO_FLG,
-       CULTIVATOR, INVENTORY_ID,remainingweight ,INVENTORYROOM_NAME ,PRODUCTID;
+       CULTIVATOR, INVENTORY_ID, remainingweight , INVENTORYROOM_NAME , PRODUCTID;
